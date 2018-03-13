@@ -1,5 +1,6 @@
 package com.gainsight.cloud.featest.model.execution;
 
+import com.gainsight.cloud.featest.model.authoring.Feature;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,26 +10,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Set;
-
+import java.util.List;
 
 /**
- * A Build is a collection of test cases run to test a Project
+ * A FeatureGroup is a collection of Features that belong together with respect to a functionality
  * <p>
- * It can be seen as Test Run kind of an entity wrapping one test cycle run
+ * FeatureGroup is a folder like construct to store multiple features based on similar functional domain
  */
+
 
 @Component
 @EqualsAndHashCode
 @Getter
 @Setter
 @Entity
-public class Build {
+public class FeatureGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    private String buildName;
-    private Set<FeatureGroup> featureGroups;
-
+    private String featureGroupName;
+    private List<Feature> features;
 }
